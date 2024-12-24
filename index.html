@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Match Game</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .align {
+            text-align: center;
+            color: white;
+        }
+
+        .button {
+            background-color: #19048f;
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            position: relative;
+            bottom: 70px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .button1 {
+            background-color: white;
+            color: black;
+            border: 2px solid #4c04aa;
+        }
+
+        .button1:hover {
+            background-color: #3c0288;
+            color: white;
+        }
+
+        .stright {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .flip-card {
+            width: 250px;
+            height: 250px;
+            perspective: 1000px;
+            position: relative;
+        }
+
+        .flip-card-inner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ccc;
+        }
+
+        .flip-card-front {
+            background: #f0f0f0;
+        }
+
+        .flip-card-back {
+            background: #efefef;
+            transform: rotateY(180deg);
+        }
+
+        .hidden {
+            visibility: hidden;
+        }
+
+        .congratulations {
+            display: none;
+            text-align: center;
+            color: gold;
+            font-size: 3em;
+            margin-top: 20px;
+        }
+
+        .congratulations.visible {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="align">Find the Match</h1>
+    <div class="congratulations">Congratulations! You Win!</div>
+    <button class="button button1" onclick="shuffleCards()">Restart</button>
+    <div class="stright">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="brain.jpg" height="250px">
+                </div>
+                <div class="flip-card-back">
+                    <img src="eye heart.jpg" alt="Avatar" name="heart" style="width:250px;height:250px;">
+                </div>
+            </div>
+        </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="brain.jpg" height="250px">
+                </div>
+                <div class="flip-card-back">
+                    <img src="eye heart.jpg" alt="Avatar" name="heart" style="width:250px;height:250px;">
+                </div>
+            </div>
+        </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="brain.jpg" height="250px">
+                </div>
+                <div class="flip-card-back">
+                    <img src="idea.png" alt="Avatar" name="idea" style="width:250px;height:250px;">
+                </div>
+            </div>
+        </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="brain.jpg" height="250px">
+                </div>
+                <div class="flip-card-back">
+                    <img src="idea.png" alt="Avatar" name="idea" style="width:250px;height:250px;">
+                </div>
+            </div>
+        </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="brain.jpg" height="250px">
+                </div>
+                <div class="flip-card-back">
+                    <img src="oops.png" alt="Avatar" name="oops" style="width:250px;height:250px;">
+                </div>
+            </div>
+        </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="brain.jpg" height="250px">
+                </div>
+                <div class="flip-card-back">
+                    <img src="oops.png" alt="Avatar" name="oops" style="width:250px;height:250px;">
+                </div>
+            </div>
+        </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="brain.jpg" height="250px">
+                </div>
+                <div class="flip-card-back">
+                    <img src="help.jpg" alt="Avatar" name="help" style="width:250px;height:250px;">
+                </div>
+            </div>
+        </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="brain.jpg" height="250px">
+                </div>
+                <div class="flip-card-back">
+                    <img src="help.jpg" alt="Avatar" name="help" style="width:250px;height:250px;">
+                </div>
+            </div>
+        </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="brain.jpg" height="250px">
+                </div>
+                <div class="flip-card-back">
+                    <img src="cool.jpg" alt="Avatar" name="cool" style="width:250px;height:250px;">
+                </div>
+            </div>
+        </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="brain.jpg" height="250px">
+                </div>
+                <div class="flip-card-back">
+                    <img src="cool.jpg" alt="Avatar" name="cool" style="width:250px;height:250px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+</body>
+<script src="script.js"></script>
+</html>
